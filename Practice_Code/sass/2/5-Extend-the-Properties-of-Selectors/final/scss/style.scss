@@ -1,3 +1,5 @@
+// VARIABLES ------------------------------------ /
+
 $white: #fff;
 
 $color-primary: #278da4;
@@ -12,7 +14,31 @@ $color-bg-light: #009fe1;
 $font-stack-primary: 'Raleway', sans-serif;
 $font-stack-secondary: 'Bree Serif', serif;
 
-/* BASE ------------------------------------------------- */
+$max-width: 1000px;
+
+// MIXINS ------------------------------------ /
+
+@mixin skewed {
+  position: relative;
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 50px; 
+    position: absolute;
+    transform: skewY(-2deg);
+    @content;
+  }
+}
+
+@mixin center {
+  width: 90%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* BASE ------------------------------------------- */
 
 * {
   box-sizing: border-box;
@@ -38,34 +64,44 @@ ul {
   margin: 0;
 }
 
+p {
+  margin-bottom: 1.25em;
+  .intro & {
+    font-size: 1.2em;
+  }
+}
+
 a {
   color: $color-primary;
   text-decoration: none;
   &:hover {
-    color: $color-secondary;
+    color: $color-secondary;  
   }
 }
-/* HEADER & FOOTER ----------------------------------------- */
+
+/* HEADER & FOOTER -------------------------------- */
 
 header {
   height: 460px;
-  background: linear-gradient($color-bg, $color-bg-light), 
+  background: linear-gradient($color-bg-light, $color-bg), 
               url('../img/bg.jpg') no-repeat;
   background-blend-mode: multiply;
   background-size: cover;
-}
-
-header h1 {
-  color: $white;
-  font-size: 4.8em;
-  margin-bottom: 0;
-  letter-spacing: 1px;
-}
-
-header p {
-  color: $color-accent;
-  font-size: 1.25em;
-  margin: 0;
+  h1 {
+    color: $white;
+    font-size: 4.8em;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+  }
+  p {
+    color: $color-accent;
+    font-size: 1.25em;
+    margin: 0;
+  }
+  @include skewed {
+    background-color: $white;
+    bottom: -25px;
+  }
 }
 
 footer {
@@ -73,9 +109,14 @@ footer {
   height: 100px;
   background-color: $color-shade;
   margin-top: 3.5em;
+  @include skewed {
+    background-color: $color-shade;
+    top: -25px;
+  }
 }
 
-/* CONTAINERS ---------------------------------------------- */
+
+/* CONTAINERS ------------------------------------- */
 
 .inner {
   padding: 0.5em 1em;
@@ -86,21 +127,34 @@ footer {
   padding: 1em 1em 3em; 
 }
 
-/* COMPONENTS ----------------------------------------------- */
+/* COMPONENTS ------------------------------------- */
 
 .main-nav {
   margin-top: 1em;
-    li {
-      display: inline-block;
-      margin: 0 0.65em;
+  li {
+    display: inline-block;
+    margin: 0 0.65em;
+  }
+  a {
+    color: $white;
+    font-size: 0.85em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.5em;
+    transition: 0.3s;
+    &:hover {
+      color: $color-accent;  
     }
-    a {
-      color: $white;
-      font-size: 0.85em;
-      text-decoration: none;
-      text-transform: uppercase;
-      padding: 0.5em;
-    }
+  }
+}
+
+.img-featured {
+  width: 165px;
+  border: 4px solid $white; 
+  border-radius: 50%;
+  margin-top: 75px;
+  position: relative;
+  z-index: 100;
 }
 
 .card {
@@ -108,39 +162,50 @@ footer {
   flex-direction: column;
   padding: 1.5em 1em;
   border: 1px solid $color-shade;
-  border-radius: .25em;
+  border-radius: 0.25em;
   h1 {
     margin: 0.35em 0 0;
     line-height: 1.25;
-  }
+  }  
   .icon,
   h1 {
     color: $color-primary;
   }
 }
 
-.btn-info {
+
+.btn {
   color: $white;
   display: inline-block;
-  font-size: 0.85em;
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
   padding: 0.75em 1.5em;
   border-radius: 0.35em;
+}
+
+.btn-callout {
+  @extend .btn;
+  font-size: 1.1em;
+  background-color: $color-secondary;
+}
+
+.btn-info {
+  @extend .btn;
+  font-size: 0.85em;
   background-color: $color-primary;  
   margin-top: auto;
 }
 
 
-/* MEDIA QUERIES ------------------------------------------------- */
+/* MEDIA QUERIES ---------------------------------- */
 
 @media (max-width: 575px) {
   header {
     height: 340px;
-  }
-  header h1 {
-    font-size: 3.4em;
+    h1 {
+      font-size: 3.4em;
+    }
   }
   .img-featured {
     display: none;
@@ -159,9 +224,7 @@ footer {
 
 @media (min-width: 768px) {
   .main-content {
-    width: 90%;
-    max-width: 1000px;
-    margin: 0 auto;
+    @include center;
   }
 }
 

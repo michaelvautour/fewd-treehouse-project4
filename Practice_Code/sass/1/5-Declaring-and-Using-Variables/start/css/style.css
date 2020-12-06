@@ -23,6 +23,14 @@ ul {
   margin: 0;
 }
 
+a {
+  color: #278da4;
+  text-decoration: none;
+}
+a:hover {
+  color: #b13c69;
+}
+
 /* HEADER & FOOTER ----------------------------------------- */
 header {
   height: 460px;
