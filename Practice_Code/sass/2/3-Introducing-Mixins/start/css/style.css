@@ -75,7 +75,7 @@ footer {
   margin-top: 3.5em;
   position: relative;
 }
-footer::before {
+footer::after {
   content: "";
   display: block;
   width: 100%;
