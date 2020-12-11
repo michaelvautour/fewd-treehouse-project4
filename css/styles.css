@@ -14,6 +14,9 @@
 /*           Media Query Breakpoints             */
 /* ============================================= */
 /* ============================================= */
+/*               Button Colors                   */
+/* ============================================= */
+/* ============================================= */
 /* Base Imports */
 /* ============================================= */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -418,22 +421,42 @@ a {
 
 .default {
   background-color: #51ddfc;
+  transition: 0.5s;
 }
-
-.error {
-  background-color: #e4757a;
-}
-
-.info {
-  background-color: #927bc1;
+.default:hover {
+  background-color: #9cecfd;
 }
 
 .success {
   background-color: #63cc82;
+  transition: 0.5s;
+}
+.success:hover {
+  background-color: #9ddfb0;
+}
+
+.error {
+  background-color: #e4757a;
+  transition: 0.5s;
+}
+.error:hover {
+  background-color: #f1b5b8;
 }
 
 .warning {
   background-color: #fd7856;
+  transition: 0.5s;
+}
+.warning:hover {
+  background-color: #feb4a2;
+}
+
+.info {
+  background-color: #927bc1;
+  transition: 0.5s;
+}
+.info:hover {
+  background-color: #bdafd9;
 }
 
 /* ============================================= */
