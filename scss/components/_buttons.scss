@@ -1,7 +1,4 @@
-
-/* ============================================= */
-/*              Buttons                          */
-/* ============================================= */
+//Buttons
 
 .btn {
     margin-top: 15px;
@@ -13,13 +10,6 @@
     border-radius: 5px;
   }
 
+@include hover-transitions;
 
-@each $btn-color, $color in $btn-colors {
-    #{$btn-color} {
-      background-color: $color;
-      transition: .5s;
-      &:hover {
-        background-color: lighten($color, 15%);
-      }
-    }
-}
+
