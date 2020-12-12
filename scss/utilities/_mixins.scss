@@ -5,7 +5,7 @@
 @each $btn-color, $color in $btn-colors {
     #{$btn-color} {
       background-color: $color;
-      transition: .5s;
+      transition: .75s;
       &:hover {
         background-color: lighten($color, 15%);
       }
